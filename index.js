@@ -6,12 +6,11 @@ let sum = 0
 
 let cards = []
 
+// state of the game
 let hasBlackJack = false
 let isAlive = false
 
 let message = ""
-
-console.log(cards);
 
 function getRandomCard() {
     let randomCard = Math.floor(Math.random() * 13) + 1
@@ -60,9 +59,12 @@ function renderGame() {
 }
 
 function newCard() {
-    let newCard = getRandomCard()
-    sum += newCard
-    cards.push(newCard)
-    renderGame()
+    // draw new card only when the player is alive and does not have blackjack
+    if (isAlive === true && hasBlackJack === false) {
+        let newCard = getRandomCard()
+        sum += newCard
+        cards.push(newCard)
+        renderGame()
+    }
 }
 
