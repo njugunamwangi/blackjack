@@ -8,6 +8,10 @@ let sumEl = document.querySelector("#sum-el")
 let cardsEl = document.querySelector("#cards-el")
 let playerEl = document.querySelector("#player-el")
 
+// actions
+let startGame = document.querySelector("#start-game")
+let drawNewCard = document.querySelector("#new-card")
+
 let sum = 0
 
 let cards = []
@@ -33,7 +37,7 @@ function getRandomCard() {
 
 }
 
-function startGame() {
+startGame.addEventListener("click", function () {
     isAlive = true
 
     let firstCard = getRandomCard()
@@ -43,7 +47,19 @@ function startGame() {
     sum = firstCard + secondCard
 
     renderGame()
-}
+})
+
+// function startGame() {
+//     isAlive = true
+
+//     let firstCard = getRandomCard()
+//     let secondCard = getRandomCard()
+
+//     cards = [firstCard, secondCard]
+//     sum = firstCard + secondCard
+
+//     renderGame()
+// }
 
 function renderGame() {
     sumEl.textContent = "Sum: " + sum
@@ -66,13 +82,22 @@ function renderGame() {
     messageEl.textContent = message
 }
 
-function newCard() {
-    // draw new card only when the player is alive and does not have blackjack
+drawNewCard.addEventListener("click", function () {
     if (isAlive === true && hasBlackJack === false) {
         let newCard = getRandomCard()
         sum += newCard
         cards.push(newCard)
         renderGame()
     }
-}
+})
+
+// function newCard() {
+//     // draw new card only when the player is alive and does not have blackjack
+//     if (isAlive === true && hasBlackJack === false) {
+//         let newCard = getRandomCard()
+//         sum += newCard
+//         cards.push(newCard)
+//         renderGame()
+//     }
+// }
 
